@@ -1,0 +1,2 @@
+PS C:\Users\filipe.souza\Documents\DisposableProjects\some-crud> kubectl apply -f manifests/service.yaml
+service/nodejs-crud-svc created

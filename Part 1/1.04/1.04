@@ -1,0 +1,2 @@
+PS C:\Users\filipe.souza\Documents\DisposableProjects\some-crud> kubectl apply -f manifests/deployment.yaml
+deployment.apps/nodejs-crud created

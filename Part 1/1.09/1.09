@@ -1,0 +1,17 @@
+PS C:\Users\filipe.souza\Documents\DisposableProjects\ping-pong> kubectl apply -f deployment.yaml
+deployment.apps/fil7er-nodejs-ping-pong created
+PS C:\Users\filipe.souza\Documents\DisposableProjects\ping-pong> kubectl apply -f service.yaml   
+service/fil7er-nodejs-ping-pong-svc created
+PS C:\Users\filipe.souza\Documents\DisposableProjects\ping-pong> kubectl apply -f ingress.yaml
+ingress.networking.k8s.io/fil7er-nodejs-ping-pong-ingress created
+PS C:\Users\filipe.souza\Documents\DisposableProjects\ping-pong> kubectl get svc,ing
+NAME                                  TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+service/kubernetes                    ClusterIP   10.43.0.1      <none>        443/TCP          6d
+service/nodejs-crud-svc               NodePort    10.43.27.180   <none>        1234:30080/TCP   6h47m
+service/fil7er-output-generator-svc   NodePort    10.43.44.234   <none>        1235:30081/TCP   58m
+service/fil7er-nodejs-ping-pong-svc   NodePort    10.43.154.50   <none>        1237:30083/TCP   108s
+
+NAME                                                        CLASS    HOSTS   ADDRESS      PORTS   AGE
+ingress.networking.k8s.io/fil7er-output-generator-ingress   <none>   *       172.31.0.2   80      56m
+ingress.networking.k8s.io/nodejs-crud-ingress               <none>   *       172.31.0.2   80      53m
+ingress.networking.k8s.io/fil7er-nodejs-ping-pong-ingress   <none>   *       172.31.0.2   80      102s

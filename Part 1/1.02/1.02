@@ -1,0 +1,14 @@
+PS C:\Users\filipe.souza\Documents\DisposableProjects\some-crud> docker push fil7er/nodejs-crud   
+Using default tag: latest
+The push refers to repository [docker.io/fil7er/nodejs-crud]
+15e5387b9d6e: Pushed
+c4a01b4954de: Mounted from fil7er/random_string_output
+7962b4fa86f9: Mounted from fil7er/random_string_output
+70fff1b8b419: Mounted from fil7er/random_string_output
+67bb22608009: Mounted from fil7er/random_string_output
+24302eb7d908: Mounted from fil7er/random_string_output
+latest: digest: sha256:df4697181789223762d878533763d77cb3323d831f032f67385f878628b53c82 size: 1575
+PS C:\Users\filipe.souza\Documents\DisposableProjects\some-crud> kubectl create deployment ex102 --image=fil7er/nodejs-crud         
+deployment.apps/ex102 created
+PS C:\Users\filipe.souza\Documents\DisposableProjects\some-crud> kubectl logs deployment/ex102       
+Server started in port 3000

@@ -1,0 +1,4 @@
+PS C:\Users\filipe.souza\Documents\GitHub\randomStringOutput> kubectl apply -f ingress.yaml
+ingress.networking.k8s.io/fil7er-output-generator-ingress created
+PS C:\Users\filipe.souza\Documents\GitHub\randomStringOutput> curl.exe  http://localhost:3002
+{"output":["Wed Jun 29 2022 09:29:33 GMT-0400 (Horário Padrão do Amazonas)","6i2u86waa"]}

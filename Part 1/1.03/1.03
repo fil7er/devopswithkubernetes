@@ -1,0 +1,2 @@
+PS C:\Users\filipe.souza\Documents\GitHub\randomStringOutput> kubectl apply -f deployment.yaml
+deployment.apps/fil7er-output-generator created
