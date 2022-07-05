@@ -1,0 +1,32 @@
+k3d cluster create myCluster --port 3003:3003@loadbalancer --port 3004:3004@loadbalancer --port 3005:3005@loadbalancer --port 3006:3006@loadbalancer --agents 4
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: fil7er-nodejs-ping-pong-svc
+spec:
+  type: LoadBalancer
+  selector:
+    app: fil7er-nodejs-ping-pong
+  ports:
+    - name: http
+      nodePort: 30001
+      protocol: TCP
+      port: 3004
+      targetPort: 3002
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: fil7er-output-generator-svc
+spec:
+  type: LoadBalancer
+  selector:
+    app: fil7er-output-generator
+  ports:
+    - name: http
+      protocol: TCP
+      port: 3003
+      targetPort: 3003
+      nodePort: 30000

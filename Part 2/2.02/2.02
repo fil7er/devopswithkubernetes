@@ -1,0 +1,27 @@
+app.get('/todos', (req, res) => {
+  res.sendFile(path.join(__dirname, '/app.html'));
+  res.send(cache.keys());
+})
+
+app.post('/todos', (req, res) => {
+  cache.set(count,req.body)
+  cache.set(count, cache.get('cache')+1)
+  res.sendFile(path.join(__dirname, '/app.html'));
+})
+
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nodejs-crud-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: nodejs-crud-svc
+            port:
+              number: 3005
