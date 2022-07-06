@@ -1,0 +1,7 @@
+metadata:
+  name: nodejs-crud-svc
+  namespace: my-namespace
+
+metadata:
+  name: nodejs-crud
+  namespace: my-namespace

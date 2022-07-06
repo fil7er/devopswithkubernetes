@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fil7er-nodejs-ping-pong-db
+  namespace: my-namespace
+spec:
+  selector:
+    matchLabels:
+      app: fil7er-nodejs-ping-pong-db
+  template:
+    metadata:
+      labels:
+        app: fil7er-nodejs-ping-pong-db
+    spec:
+      containers:
+      - name: fil7er-nodejs-ping-pong-db
+        image: postgres
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5432
+        env:
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: POSTGRES_PASSWORD
+                name: postgres-pass
+
+
+apiVersion: v1
+kind: Secret
+metadata:
+    name: postgres-pass
+data:
+    POSTGRES_PASSWORD: ENC[AES256_GCM,data:J41x6aEOk65xfw==,iv:9Ri2V8ZNWPaksoOR58sUPbINA9QKH/rR+6DYy3srrew=,tag:GNEoMzsguudeOV8+Q9JVjQ==,type:str] # This password means nothing
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1x8u4q7lu9naa0ueud4jfwhhxlq2c4j9gu0u0rqp8u30eqphcsezsukyssl
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBTRlRDblRTMVVhbUxuanho
+            S0tFNy8wdForVzYwRUV5L2ZXM3c2b0hnaVFNCkE0UzV3eEdCY2JUQWQ3WUNLZWVu
+            Mk42WVRzMkRhR0Fzc21MQU1PM1JPUkEKLS0tIDhldlhuSUVzalVHQmtiNml5M1gv
+            MjcyYnJoSlIwQ0FvNEdoT2U3Qkp5MTAKViy5TxLITqFN6T6kkJDXy1N7ZuS3cWmz
+            w+nt7/PLDeh7UEuIf9RJDMnj91TpTb+ncIi+yl6yv5C4WB5AQ3CKbw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2022-07-06T17:36:48Z"
+    mac: ENC[AES256_GCM,data:3UAcCw3E6jItiyftgYqYQubC454z2uEH0D9FcSsLsSrga+3bxt3ssD3+QVlg6j0Bzx0famHrqBooGxb8NRpqgBTws7Cs5UxusyFBycCXMKHebidcFVb4QLfWgudwnNDnV8rGRBSZ4Xi1LqbyajXUQB3G0QFbaRqEB1a30MXCtns=,iv:dgmLpnswUAZkvngP8gMw2lxeeac1vLFuVT8r+U+uYsg=,tag:ljBnmR2wGguh7ikxqmG1ng==,type:str]
+    pgp: []
+    encrypted_regex: ^(data)$
+    version: 3.7.3

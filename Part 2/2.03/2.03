@@ -1,0 +1,5 @@
+kubectl create namespace my-namespace
+namespace/my-namespace created
+
+kubectl config set-context --current --namespace=my-namespace
+Context "k3d-myCluster" modified.

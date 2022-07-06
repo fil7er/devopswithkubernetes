@@ -1,0 +1,33 @@
+PS C:\cmd-apps> ./age-keygen -o key.txt
+age-keygen: warning: writing secret key to a world-readable file
+Public key: age1dhg4vl43znwz737vn27sj6znjxpcemyrnjquwzywu9w2ujrdm3rs30ghrr
+
+PS C:\cmd-apps> ./sops --encrypt --age age1dhg4vl43znwz737vn27sj6znjxpcemyrnjquwzywu9w2ujrdm3rs30ghrr --encrypted-regex '^(data)$' secret.yaml > secret.enc.yaml
+/* This hash above means nothing */
+
+apiVersion: v1
+kind: Secret
+metadata:
+    name: pixabay-apikey
+data:
+    API_KEY: ENC[AES256_GCM,data:7v66COMIiVlM7QAnlJ1TIJmoppzxSMY9ue0TUayytPcn+k5EOyRxvvGFZ9CZnlvoEt00OaIhS8k=,iv:EvEQfeJHRWL9A+muDvQXIABuSrPwLpEHY3H6Odw/sI4=,tag:TYb3FloWrLv4TSYIo4T5HQ==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1dhg4vl43znwz737vn27sj6znjxpcemyrnjquwzywu9w2ujrdm3rs30ghrr
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA3d1owVkd3K0RuTm13RjFP
+            bG9vQXI3MloybEl4ek52RzBGcm1uUjhKN0Y0CllVcnNUNklIYVF0aFpvRmdmWXg4
+            S0Y5aWl3ZU1GRS9seFdQZnFRZjdialUKLS0tIFBDVlR4Vkh6RVg1L01CY1FheG9O
+            RWp4SExlcXhzMzV3S1Zub3NyeTJCNm8KAW55LGoOMs5YuMDbwIXygBk3RreA5qOj
+            MJIeHTfpPPyydPhrDQ4fFpZoxvyDe4IN2cMSYrruvkppuvpnjKFcKg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2022-07-06T12:08:22Z"
+    mac: ENC[AES256_GCM,data:mMj4Vb+zN/8pjt8NAy0h4mnQUVPa8qUuAjZwKIhhGgXEsdYmeNL0pPDaFn5DmIBq/Iur36j9jLjJ/CSo5wdPBfYNk560LHlijpRM6OLYch5MJLsRuOvBLD5U9Fi18893WF4Nm58FXBE140sYata/ko1EHpXn9LEignyTx3llOiU=,iv:W9Zk0PZG2w2b4jhqspC9uVqolLaSob4hQwqxojaoS1c=,tag:nyyk0gAjOh5lKG2Y5s4BCQ==,type:str]
+    pgp: []
+    encrypted_regex: ^(data)$
+    version: 3.7.3
