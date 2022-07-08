@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: statefullset-db
+  namespace: my-namespace
+spec:
+  selector:
+    matchLabels:
+      app: nodejs-crud-db
+  serviceName: nodejs-crud-db-svc
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nodejs-crud-db
+    spec:
+      containers:
+      - name: mongodb
+        image: mongo
+        ports:
+        - containerPort: 27017
+          name: mongodb
+        volumeMounts:
+        - name: data
+          mountPath: /data/db
+        env:
+          - name: MONGO_INITDB_ROOT_USERNAME
+            valueFrom:
+              secretKeyRef:
+                key: user
+                name: nodejs-crud-db-secret
+          - name: MONGO_INITDB_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: password
+                name: nodejs-crud-db-secret
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodejs-crud-db-svc
+spec:
+  selector:
+    app: nodejs-crud-db
+  ports:
+  - port: 27017
+    targetPort: 27017

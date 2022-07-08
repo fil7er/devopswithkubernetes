@@ -1,12 +1,26 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Service
 metadata:
-  name: fil7er-nodejs-ping-pong-db
+  name: fil7er-nodejs-ping-pong-db-svc
+  namespace: my-namespace
+spec:
+  selector:
+    app: fil7er-nodejs-ping-pong-db-svc
+  ports:
+  - port: 5432
+    targetPort: 5432
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mystatefulset
   namespace: my-namespace
 spec:
   selector:
     matchLabels:
       app: fil7er-nodejs-ping-pong-db
+  serviceName: fil7er-nodejs-ping-pong-db-svc
+  replicas: 1
   template:
     metadata:
       labels:
@@ -21,12 +35,22 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 5432
-        env:
+          name: postgres-port
+          env:
           - name: POSTGRES_PASSWORD
             valueFrom:
               secretKeyRef:
                 key: POSTGRES_PASSWORD
                 name: postgres-pass
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 5Gi
+
 
 
 apiVersion: v1

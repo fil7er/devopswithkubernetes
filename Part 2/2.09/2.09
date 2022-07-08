@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: nodejs-crud-cronjob
+spec:
+  schedule: "0 0 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: cron-curl
+            image: alpine/curl
+            imagePullPolicy: Always
+            command:
+            - /bin/sh
+            - -c
+            - curl -d "inputTodo=Read+https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FSpecial%3ARandom" -X POST http://localhost:3006/todos
+          restartPolicy: Always
