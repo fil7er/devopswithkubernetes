@@ -12,3 +12,7 @@ NAME                             TYPE           CLUSTER-IP    EXTERNAL-IP     PO
 fil7er-nodejs-ping-pong-db-svc   LoadBalancer   10.32.8.46    35.228.45.221   5432:30014/TCP   37m
 fil7er-nodejs-ping-pong-svc      LoadBalancer   10.32.7.214   34.88.55.135    3005:30011/TCP   36m
 kubernetes                       ClusterIP      10.32.0.1     <none>          443/TCP          41m
+
+
+
+http://34.88.55.135:3005/
