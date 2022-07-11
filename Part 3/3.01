@@ -1,0 +1,14 @@
+NAME                                      READY   STATUS    RESTARTS   AGE
+fil7er-nodejs-ping-pong-58b794db7-pr6hd   1/1     Running   0          114s
+mystatefulset-0                           1/1     Running   0          2m48s
+PS C:\Users\filipe.souza\Documents\DisposableProjects\ping-pong> kubectl logs fil7er-nodejs-ping-pong-58b794db7-pr6hd
+W0711 13:47:17.248719   23028 gcp.go:120] WARNING: the gcp auth plugin is deprecated in v1.22+, unavailable in v1.25+; use gcloud instead.
+To learn more, consult https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
+3005
+PS C:\Users\filipe.souza\Documents\DisposableProjects\ping-pong> kubectl get svc
+W0711 13:47:36.631144    1540 gcp.go:120] WARNING: the gcp auth plugin is deprecated in v1.22+, unavailable in v1.25+; use gcloud instead.
+To learn more, consult https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
+NAME                             TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)          AGE
+fil7er-nodejs-ping-pong-db-svc   LoadBalancer   10.32.8.46    35.228.45.221   5432:30014/TCP   37m
+fil7er-nodejs-ping-pong-svc      LoadBalancer   10.32.7.214   34.88.55.135    3005:30011/TCP   36m
+kubernetes                       ClusterIP      10.32.0.1     <none>          443/TCP          41m
