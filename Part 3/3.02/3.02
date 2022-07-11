@@ -1,0 +1,25 @@
+Name:             fil7er-output-generator-ingress
+Labels:           <none>
+Namespace:        default
+Address:
+Ingress Class:    <none>
+Default backend:  <default>
+Rules:
+  Host        Path  Backends
+  ----        ----  --------
+  *
+              /pingpong   fil7er-nodejs-ping-pong-svc:80 (10.28.2.14:3005)
+              /output     fil7er-output-generator-svc:80 (10.28.0.5:3009)
+Annotations:  ingress.kubernetes.io/ssl-redirect: false
+Events:
+  Type    Reason  Age                   From                     Message
+  ----    ------  ----                  ----                     -------
+  Normal  Sync    2m9s (x3 over 3m30s)  loadbalancer-controller  Scheduled for sync
+PS C:\Users\filipe.souza\Documents\GitHub\randomStringOutput> kubectl get ing --watch
+W0711 17:28:29.878655   35264 gcp.go:120] WARNING: the gcp auth plugin is deprecated in v1.22+, unavailable in v1.25+; use gcloud instead.
+To learn more, consult https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
+NAME                              CLASS    HOSTS   ADDRESS   PORTS   AGE
+fil7er-output-generator-ingress   <none>   *                 80      2m31s
+fil7er-output-generator-ingress   <none>   *       34.160.103.5   80      2m49s
+fil7er-output-generator-ingress   <none>   *       34.160.103.5   80      2m54s
+fil7er-output-generator-ingress   <none>   *       34.160.103.5   80      3m2s
