@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-crud
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodejs-crud
+  template:
+    metadata:
+      labels:
+        app: nodejs-crud
+    spec:
+      containers:
+        - name: nodejs-crud
+          image: PROJECT-BACK/IMAGE
+          ports:
+            - containerPort: 3013
+          env:
+          - name: MONGO_HOST
+            valueFrom:
+              secretKeyRef:
+                key: host
+                name: nodejs-crud-db-secret
+          - name: MONGO_USER
+            valueFrom:
+              secretKeyRef:
+                key: user
+                name: nodejs-crud-db-secret
+          - name: MONGO_PASS
+            valueFrom:
+              secretKeyRef:
+                key: password
+                name: nodejs-crud-db-secret
+          resources:
+            limits:
+              memory: 120Mi
+              cpu: 250m

@@ -22,6 +22,3 @@ DBaaS Cons
     - Country/Regional issues can affect your server depending what's your cloud provider
     - There's no guarantee what's really happening inside of the server, and how they are treating your datas
 
-
-I Choose MongoDB with PersistentVolumeClaims in my project, because easy and fast to setup
-
