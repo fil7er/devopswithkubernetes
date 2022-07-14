@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: fil7er-nodejs-ping-pong
+  name: fil7er-nodejs-ping-pong
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fil7er-nodejs-ping-pong
+  template:
+    metadata:
+      labels:
+        app: fil7er-nodejs-ping-pong
+    spec:
+      containers:
+      - image: fil7er/nodejs-ping-pong
+        name: fil7er-nodejs-ping-pong
+        ports:
+          - containerPort: 3005
+        env:
+          - name: POSTGRES_PASSWORD
+            value: "-"
+          - name: POSTGRES_HOST
+            value: fil7er-nodejs-ping-pong-db-svc
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "250m"
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: fil7er-output-generator
+  name: fil7er-output-generator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fil7er-output-generator
+  template:
+    metadata:
+      labels:
+        app: fil7er-output-generator
+    spec:
+      containers:
+      - image: fil7er/random_string_output
+        name: fil7er-output-generator
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "250m"
+        ports:
+          - containerPort: 3009
+            name: save-file-port
