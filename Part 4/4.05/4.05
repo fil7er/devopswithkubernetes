@@ -1,0 +1,12 @@
+app.put('/todos/:id', (req, res) => {
+  mongoClient.connect(DB_HOST, (err, client) => {
+    if (err) throw err
+    if (req.body.todos.lenght > 140) res.send(401);
+    const database = client.db(DB_DB);
+    database.collection(DB_COLLECTION).updateOne(req.id, req.body.todos, (err) => {
+      if (err) throw err
+      res.status(201);
+      res.send("Done");
+    });
+  });
+})
