@@ -1,0 +1,54 @@
+► connecting to github.com
+► cloning branch "main" from Git repository "https://github.com/fil7er/nodejs-some-crud.git"
+✔ cloned repository
+► generating component manifests
+✔ generated component manifests
+✔ component manifests are up to date
+► installing components in "flux-system" namespace
+✔ installed components
+✔ reconciled components
+► determining if source secret "flux-system/flux-system" exists
+► generating source secret
+✔ public key: -REMOVED-
+✔ configured deploy key "flux-system-main-flux-system" for "https://github.com/fil7er/nodejs-some-crud"
+► applying source secret "flux-system/flux-system"
+✔ reconciled source secret
+► generating sync manifests
+✔ generated sync manifests
+✔ sync manifests are up to date
+► applying sync manifests
+✔ reconciled sync configuration
+◎ waiting for Kustomization "flux-system/flux-system" to be reconciled
+✔ Kustomization reconciled successfully
+► confirming components are healthy
+✔ helm-controller: deployment ready
+✔ kustomize-controller: deployment ready
+✔ notification-controller: deployment ready
+✔ source-controller: deployment ready
+✔ all components are healthy
+
+
+NAMESPACE     NAME                                      READY   STATUS                       RESTARTS   AGE
+kube-system   local-path-provisioner-6c79684f77-5lmxk   1/1     Running                      0          2m22s
+kube-system   coredns-d76bd69b-cp25r                    1/1     Running                      0          2m22s
+flux-system   helm-controller-7cdc7874f8-js8jk          1/1     Running                      0          2m3s
+flux-system   notification-controller-57cd4f4df-n5btf   1/1     Running                      0          2m3s
+flux-system   kustomize-controller-f49bd95b7-s2mnp      1/1     Running                      0          2m3s
+flux-system   source-controller-76cfbc6d49-dqjsv        1/1     Running                      0          2m2s
+kube-system   helm-install-traefik-crd-gldnj            0/1     Completed                    0          2m22s
+kube-system   metrics-server-7cd5fcb6b7-brmjz           1/1     Running                      0          2m22s
+some-crud     svclb-nodejs-crud-svc-24wbh               1/1     Running                      0          90s
+kube-system   svclb-traefik-sn4sz                       2/2     Running                      0          71s
+kube-system   helm-install-traefik-rj75x                0/1     Completed                    2          2m22s
+some-crud     nodejs-crud-7cb79bbb4f-c5q6k              0/1     CreateContainerConfigError   0          90s
+some-crud     nodejs-crud-7cb79bbb4f-7bzhx              0/1     CreateContainerConfigError   0          90s
+some-crud     statefullset-db-0                         0/1     CreateContainerConfigError   0          90s # Secret not set yet
+kube-system   traefik-df4ff85d6-pnvt6                   1/1     Running                      0          71s
+some-crud     nodejs-crud-7cb79bbb4f-ss979              0/1     Running                      0          90s
+some-crud     nodejs-crud-7cb79bbb4f-c5q6k              0/1     Running                      0          91s 
+some-crud     nodejs-crud-7cb79bbb4f-7bzhx              0/1     Running                      0          93s #Probe not getting Database connection
+some-crud     statefullset-db-0                         0/1     Running                      0          96s
+some-crud     statefullset-db-0                         1/1     Running                      0          111s
+some-crud     nodejs-crud-7cb79bbb4f-c5q6k              1/1     Running                      0          2m1s
+some-crud     nodejs-crud-7cb79bbb4f-ss979              1/1     Running                      0          2m1s
+some-crud     nodejs-crud-7cb79bbb4f-7bzhx              1/1     Running                      0          2m1s

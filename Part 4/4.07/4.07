@@ -1,0 +1,86 @@
+► connecting to github.com
+► cloning branch "main" from Git repository "https://github.com/fil7er/randomStringOutput.git"
+✔ cloned repository
+► generating component manifests
+✔ generated component manifests
+✔ component manifests are up to date
+► installing components in "flux-system" namespace
+✔ installed components
+✔ reconciled components
+► determining if source secret "flux-system/flux-system" exists
+► generating source secret
+✔ public key: --REMOVED--
+✔ configured deploy key "flux-system-main-flux-system" for "https://github.com/fil7er/randomStringOutput"
+► applying source secret "flux-system/flux-system"
+✔ reconciled source secret
+► generating sync manifests
+✔ generated sync manifests
+✔ sync manifests are up to date
+► applying sync manifests
+✔ reconciled sync configuration
+◎ waiting for Kustomization "flux-system/flux-system" to be reconciled
+✔ Kustomization reconciled successfully
+► confirming components are healthy
+✔ helm-controller: deployment ready
+✔ kustomize-controller: deployment ready
+✔ notification-controller: deployment ready
+✔ source-controller: deployment ready
+✔ all components are healthy
+
+
+NAMESPACE                 NAME                                      READY   STATUS      RESTARTS   AGE
+kube-system               coredns-d76bd69b-4q57m                    1/1     Running     0          105s
+kube-system               local-path-provisioner-6c79684f77-7s95r   1/1     Running     0          105s
+kube-system               helm-install-traefik-crd-f6m4g            0/1     Completed   0          105s
+flux-system               source-controller-76cfbc6d49-n9fd2        1/1     Running     0          83s
+flux-system               notification-controller-57cd4f4df-bwc4w   1/1     Running     0          83s
+kube-system               helm-install-traefik-sk5c2                0/1     Completed   1          105s
+flux-system               kustomize-controller-f49bd95b7-7m5dm      1/1     Running     0          83s
+flux-system               helm-controller-7cdc7874f8-797hc          1/1     Running     0          83s
+kube-system               metrics-server-7cd5fcb6b7-v9h7d           1/1     Running     0          105s
+kube-system               svclb-traefik-4xtz2                       2/2     Running     0          67s
+string-output-namespace   fil7er-output-generator-c8946796-wxl5j    1/1     Running     0          61s
+string-output-namespace   fil7er-output-generator-c8946796-f8z8r    1/1     Running     0          61s
+string-output-namespace   fil7er-output-generator-c8946796-kttxx    1/1     Running     0          61s
+kube-system               traefik-df4ff85d6-xplwb                   1/1     Running     0          67s
+
+► cloning branch "main" from Git repository "https://github.com/fil7er/nodejs-ping-pong.git"
+✔ cloned repository
+► generating component manifests
+✔ generated component manifests
+✔ committed sync manifests to "main" ("a17c482bc2720cffae3b8a270887706f62fe1e49")
+► pushing component manifests to "https://github.com/fil7er/nodejs-ping-pong.git"
+✔ reconciled components
+► determining if source secret "flux-system/flux-system" exists
+✔ source secret up to date
+► generating sync manifests
+✔ generated sync manifests
+✔ committed sync manifests to "main" ("e633d08966295777d3d3a03c43d31dbc78f12210")
+► pushing sync manifests to "https://github.com/fil7er/nodejs-ping-pong.git"
+► applying sync manifests
+✔ reconciled sync configuration
+◎ waiting for Kustomization "flux-system/flux-system" to be reconciled
+✔ Kustomization reconciled successfully
+► confirming components are healthy
+✔ helm-controller: deployment ready
+✔ kustomize-controller: deployment ready
+✔ notification-controller: deployment ready
+✔ source-controller: deployment ready
+✔ all components are healthy
+
+NAMESPACE             NAME                                       READY   STATUS                       RESTARTS      AGE
+kube-system           coredns-d76bd69b-4q57m                     1/1     Running                      0             27m
+kube-system           local-path-provisioner-6c79684f77-7s95r    1/1     Running                      0             27m
+kube-system           helm-install-traefik-crd-f6m4g             0/1     Completed                    0             27m
+flux-system           notification-controller-57cd4f4df-bwc4w    1/1     Running                      0             27m
+kube-system           helm-install-traefik-sk5c2                 0/1     Completed                    1             27m
+flux-system           helm-controller-7cdc7874f8-797hc           1/1     Running                      0             27m
+kube-system           metrics-server-7cd5fcb6b7-v9h7d            1/1     Running                      0             27m
+kube-system           svclb-traefik-4xtz2                        2/2     Running                      0             27m
+kube-system           traefik-df4ff85d6-xplwb                    1/1     Running                      0             27m
+ping-pong-namespace   mystatefulset-0                            0/1     CreateContainerConfigError   0             106s
+ping-pong-namespace   fil7er-nodejs-ping-pong-7969fc668d-qwcgv   0/1     CrashLoopBackOff             3 (39s ago)   106s
+ping-pong-namespace   fil7er-nodejs-ping-pong-7969fc668d-pp5xx   0/1     CrashLoopBackOff             3 (39s ago)   106s
+ping-pong-namespace   fil7er-nodejs-ping-pong-7969fc668d-bwf4p   0/1     CrashLoopBackOff             3 (39s ago)   106s
+
+// Ping-Pong and Log Output are in different clusters
