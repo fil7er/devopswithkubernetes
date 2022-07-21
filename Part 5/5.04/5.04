@@ -1,0 +1,11 @@
+Rancher
+ 
+ - Easy and simple to install and expand the cluster
+ - Simple to upgrade, but require to do in their separated procedures
+ - Provides decent support
+
+ Openshift
+
+ - More tools for creating container images
+ - Upgrade involves the kubernetes distribution, but have full control on all procedures
+ - Better support and customer experience

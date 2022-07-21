@@ -1,0 +1,20 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: nodejs-ping-pong-svlss
+  namespace: ping-pong-namespace
+spec:
+  template:
+    metadata:
+      name: nodejs-ping-pong-svlss-v1
+    spec:
+      containers:
+        - image: fil7er/nodejs-ping-pong
+          env:
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: POSTGRES_PASSWORD
+                name: mysecret
+          - name: POSTGRES_HOST
+            value: fil7er-nodejs-ping-pong-db-svc
